@@ -1,0 +1,32 @@
+Project Info
+
+
+==== Arduino Requests ====
+
+Requests are sent out in the format of: temperature|humidity
+
+this value is split by the python script and results sent to the server for processing data
+
+==== Database ====
+
+
+	CREATE TABLE rawTemperatureReading (
+		insert_id int NOT NULL AUTO_INCREMENT,
+		temperature_reading NOT NULL DECIMAL(6,3),
+		temperature_unit NOT NULL varchar(16),
+		insert_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+		PRIMARY KEY (insert_id)
+	);
+
+	CREATE TABLE rawHumidityReading (
+		insert_id int NOT NULL AUTO_INCREMENT,
+		humidity_reading NOT NULL DECIMAL(6,3),
+		humidity_unit NOT NULL varchar(16),
+		insert_timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+		PRIMARY KEY (insert_id)
+	);
+
+==== Sensor Info ====
+
+Had reading of 70% +- 1.5% when calibrated with salt-water solution in bag, allowing to sit for 15 hours.
+The humidity should have read 75%, meaning we have an inaccuracy of ~%5
